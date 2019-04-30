@@ -10,7 +10,7 @@ export class EmployeeService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getEmployee() {
+  getEmployees() {
     return this.firestore.collection('employees').snapshotChanges();
   }
 }

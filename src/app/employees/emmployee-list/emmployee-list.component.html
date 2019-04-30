@@ -1,4 +1,4 @@
-<table class="table table hover">
+<table class="table table-hover">
   <thead>
     <th>Name</th>
     <th>Position</th>
@@ -7,11 +7,11 @@
 
   </thead>
   <tbody>
-    <tr *ngFor="let item of list">
-      <td>{{item.empCode}}-{{item.fullName}}</td>
-      <td>{{item.position}}</td>
-      <td>{{item.mobile}}</td>
-      <td><a class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+    <tr *ngFor="let emp of list">
+      <td (click)="onEdit(emp)">{{emp.empCode}}-{{emp.fullName}}</td>
+      <td (click)="onEdit(emp)">{{emp.position}}</td>
+      <td (click)="onEdit(emp)">{{emp.mobile}}</td>
+      <td><a class="btn btn-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash"></i></a></td>
 
 
     </tr>

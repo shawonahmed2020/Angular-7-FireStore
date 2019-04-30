@@ -16,26 +16,32 @@ export class EmployeeComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.resetForm();
-  }
-  resetForm(form?: NgForm) {
+    this.resetForm(); }
+resetForm(form?: NgForm) {
     if (form != null) {
-
       form.resetForm();
     }
     this.service.formData = {
-      id: '',
+      id: null,
       fullName: '',
-      empCode: '',
       position: '',
-      mobile: ''
+      empCode: '',
+      mobile: '',
     };
   }
 
   onSubmit(form: NgForm) {
-    let data = form.value;
-    this.firestore.collection('employees').add(data);
+    let data = Object.assign({}, form.value);
+    delete data.id;
+    if (form.value.id == null){
+      this.firestore.collection('employees').add(data);
+    } else {
+      this.firestore.doc('employees/' + form.value.id).update(data);
+    }
     this.resetForm(form);
-    this.toastr.success('Submitted Successfully', 'EMP. Registered');
+    this.toastr.success('Employee successfully registered');
+
   }
+
 }
+
