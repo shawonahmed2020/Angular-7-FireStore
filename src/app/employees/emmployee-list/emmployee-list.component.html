@@ -1,3 +1,19 @@
-<p>
-  emmployee-list works!
-</p>
+<table class="table table hover">
+  <thead>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Mobile</th>
+    <th></th>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list">
+      <td>{{item.empCode}}-{{item.fullName}}</td>
+      <td>{{item.position}}</td>
+      <td>{{item.mobile}}</td>
+      <td><a class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+
+
+    </tr>
+  </tbody>
+</table>

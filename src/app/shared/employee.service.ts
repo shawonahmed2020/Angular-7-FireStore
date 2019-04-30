@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Employee } from './employee.model';
 import { Injectable } from '@angular/core';
 
@@ -7,5 +8,9 @@ import { Injectable } from '@angular/core';
 export class EmployeeService {
   formData: Employee;
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) { }
+
+  getEmployee() {
+    return this.firestore.collection('employees').snapshotChanges();
+  }
 }
